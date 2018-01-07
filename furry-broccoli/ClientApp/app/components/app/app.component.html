@@ -1,10 +1,14 @@
-<div class='container-fluid'>
-    <div class='row'>
-        <div class='col-sm-3'>
-            <nav-menu></nav-menu>
-        </div>
-        <div class='col-sm-9 body-content'>
+<div class="root-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 class="app-name">furry-broccoli</h1>
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <nav-menu></nav-menu>    
+        </mat-sidenav>
+        <mat-sidenav-content>        
             <router-outlet></router-outlet>
-        </div>
-    </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
